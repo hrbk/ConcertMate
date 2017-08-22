@@ -24,6 +24,7 @@ Events.sync({force: false}).then(() => {
 	console.log('Created "events" table');
 });
 
+
 seq
   .authenticate()
   .then(() => {
