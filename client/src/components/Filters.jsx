@@ -29,10 +29,15 @@ class Favorites extends React.Component {
   handleSubmit(loc) {
     geocodeByAddress(loc)
     .then(results => getLatLng(results[0]))
-    .then(latLng => console.log('success', latLng))
+    .then(latLng => {
+      let userLoc = {
+        lat: latLng.lat,
+        lng: latLng.lng
+      }
+      this.props.requestEvents(this.props.startDate, userLoc.lat, userLoc.lng);
+    })
     .catch(error => console.log('error', error))
     console.log(this.state.search)
-
   }
 
   render() {

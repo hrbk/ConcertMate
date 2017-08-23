@@ -10,7 +10,7 @@ const Concerts = (props) => {
     <Panel collapsible defaultExpanded header="Nearby Concerts" bsStyle="info">
       <ListGroup fill>
         {props.events.map((event, i) => {
-          return <ConcertEntry handleHover={props.handleHover} event={event} key={i} handleArtistClick={props.handleArtistClick}/>
+          return <ConcertEntry event={event} key={i} />
         })}
       </ListGroup>
     </Panel>
