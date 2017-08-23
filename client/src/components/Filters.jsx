@@ -36,11 +36,8 @@ class Favorites extends React.Component {
   }
 
   render() {
-
     const datepicker =  {
       paddingTop: '3.5px'
-
-
     }
     const inputProps = {
       value: this.state.search,
