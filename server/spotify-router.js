@@ -5,8 +5,8 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 let spotifyCredentials = {
-	client_id: '1b4dd6acf0c14120b5fa6ae37b4c773a',
-	client_secret: '365aec3923fe452fbbeb31fe842c2a4c',
+	client_id: process.env.SPOTIFY_CLIENT_ID,
+	client_secret: process.env.SPOTIFY_SECRET_ID,
 	redirect_uri: 'http://localhost:1337/spotify/callback/'
 };
 

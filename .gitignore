@@ -31,3 +31,4 @@ bower_components/
 
 #config files
 database/config.js
+.env
