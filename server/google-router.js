@@ -8,7 +8,7 @@ let async = require('async');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
-let apiKey = 'AIzaSyDmK0Cn9coNHBvlgldWcUxNvx2PqmdCUlg';
+let apiKey = process.env.GOOGLE_GEOCODING_KEY;
 
 // very beginning of implementing google search to pull lat/lng to recenter the map/songkick search
 router.post('/search', bodyParser.json(), (req, res) => {

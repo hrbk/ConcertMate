@@ -1,9 +1,6 @@
-const credentials = require('./config.js');
-let user = credentials.loginData.user;
-let password = credentials.loginData.password
-
 const Sequelize = require('sequelize');
-const seq = new Sequelize('greenfielddb', user, password, {
+
+const seq = new Sequelize(process.env.DATABASE_NAME, process.env.DATABESE_USERNAME, process.env.DATABASE_PASSWORD, {
   host: 'localhost',
   dialect: 'mysql',
   logging: false
