@@ -21,7 +21,7 @@ const Events = seq.define('events', {
 });
 
 Events.sync({force: false}).then(() => {
-	console.log('Created "events" table');
+  console.log('Created "events" table');
 });
 
 
@@ -35,31 +35,31 @@ seq
   });
 
 let createEvent = (event) => {
-	return Events.create({
-		displayName: event.displayName,
-	  headline: event.performance[0].displayName,
-	  uri: event.uri,
-	  time: event.start.time,
-	  date: event.start.date,
-	  venue: event.venue.displayName,
-	  latitude: event.location.lat,
-	  longitude: event.location.lng
-	});
-} 
+  return Events.create({
+    displayName: event.displayName,
+    headline: event.performance[0].displayName,
+    uri: event.uri,
+    time: event.start.time,
+    date: event.start.date,
+    venue: event.venue.displayName,
+    latitude: event.location.lat,
+    longitude: event.location.lng
+  });
+}
 
-let getEvents = (date, callback) => {
-	return Events.findAll({
-		where: {
-			date: date
-		},
-		raw: true
-	})
-	.then((data) => {
-		callback(data);
-	})
-	.catch((error) => {
-		console.log("Error getting events: ", error);
-	})
+let getEvents = (date, lat, lng, callback) => {
+  return Events.findAll({
+    where: {
+      date: date
+    },
+    raw: true
+  })
+  .then((data) => {
+    callback(data);
+  })
+  .catch((error) => {
+    console.log("Error getting events: ", error);
+  })
 };
 
 module.exports.createEvent = createEvent;
