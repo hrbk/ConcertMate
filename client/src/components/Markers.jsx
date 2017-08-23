@@ -1,6 +1,6 @@
 import React from 'react';
-
-import {markerStyle, markerStyleHover} from './MarkerStyles.js';
+// 
+// import {markerStyle, markerStyleHover} from './MarkerStyles.js';
 
 export default class Markers extends React.Component {
   constructor(props) {
@@ -21,4 +21,26 @@ export default class Markers extends React.Component {
       <div style={style}></div>
     )
   }
+}
+const markerStyle = {
+  position: 'absolute',
+  width: 20,
+  height: 20,
+  left: -10,
+  right: -10,
+
+  border: '5px solid #CD5C5C',
+  borderRadius: 20,
+  backgroundColor: 'white'
+};
+const markerStyleHover = {
+  position: 'absolute',
+  width: 20,
+  height: 20,
+  left: -10,
+  right: -10,
+
+  border: '5px solid #0000CD',
+  borderRadius: 20,
+  backgroundColow: 'white'
 }
