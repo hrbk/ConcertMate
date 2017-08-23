@@ -25,12 +25,12 @@ class ConcertEntry extends React.Component {
 
     return (
       <ListGroupItem
-        header={this.props.event.headline}
+        header={this.props.event.performance[0].artist.displayName}
         onClick={() => this.handleClick(this.props.event.headline)}
         onMouseEnter={() =>  this.mouseIn(this.props.event.venue)}
         onMouseLeave={() => this.mouseOut()}>
-        <span> {this.props.event.venue} on {this.props.event.date.slice(0, 10)} {this.props.event.time}</span>
-        <a href={this.props.event.uri}> Buy Tickets</a>
+        <span> {this.props.event.performance[0].artist.displayName} on {this.props.event.start.date.slice(0, 10)}</span>
+        <a href={this.props.event.uri} target='_blank'> Buy Tickets</a>
       </ListGroupItem>
     )
   }
@@ -38,4 +38,3 @@ class ConcertEntry extends React.Component {
 };
 
 export default ConcertEntry;
-
