@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const seq = new Sequelize(process.env.DATABASE_NAME, process.env.DATABESE_USERNAME, process.env.DATABASE_PASSWORD, {
-  host: 'localhost',
+  host: process.env.DATABSE_HOST,
   dialect: 'mysql',
   logging: false
 });
@@ -17,7 +17,7 @@ const Events = seq.define('events', {
   longitude: Sequelize.STRING
 });
 
-Events.sync({force: false}).then(() => {
+Events.sync().then(() => {
 	console.log('Created "events" table');
 });
 
