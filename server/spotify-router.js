@@ -4,10 +4,12 @@ let bodyParser = require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
+let port = process.env.PORT;
+
 let spotifyCredentials = {
 	client_id: process.env.SPOTIFY_CLIENT_ID,
 	client_secret: process.env.SPOTIFY_SECRET_ID,
-	redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
+	redirect_uri: `http://localhost:${port}/spotify/callback/`,
 };
 
 let token = undefined;
@@ -25,12 +27,12 @@ router.get('/login', (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.send(authorizeURL);
-
+    
 });
 
 //callback route
 router.get('/callback', (req, res) => {
-	res.redirect('http://localhost:5000/');
+	res.redirect(`http://localhost:${port}/`);
 });
 
 //save token
