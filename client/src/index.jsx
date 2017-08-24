@@ -64,7 +64,7 @@ class App extends React.Component {
     this.setState({
       startDate: date
     });
-    this.requestSongkickEvents(date);
+    this.requestSongkickEvents(date, this.state.mapCenter.lat, this.state.mapCenter.lng);
   }
 
   handleArtistClick(clickedArtist) {
