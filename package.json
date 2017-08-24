@@ -49,7 +49,8 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
-    "test": "mocha"
+    "test": "mocha",
+    "heroku-postbuild": "webpack -p --progress"
   },
   "babel": {
     "presets": [
