@@ -7,7 +7,7 @@ let spotifyRouter = require('./spotify-router.js');
 let songkickRouter = require('./songkick-router.js');
 let googleRouter = require('./google-router.js');
 
-let port = process.env.PORT || 1337;
+let port = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + '/../client/dist'));
 
