@@ -20,7 +20,6 @@ class Map extends React.Component {
     super(props);
     this.state = {
       // we hard-coded this map center but ideally you'll be able to set location based on google search
-      center: this.props.mapCenter,
       zoom: 13,
       markerLocs: []
     }
@@ -36,13 +35,14 @@ class Map extends React.Component {
     let events = nextProps.events;
     let venues = events.map((event) => {
       return {
-        lat: event.latitude,
-        lng: event.longitude,
-        name: event.venue
+        lat: event.location.lat,
+        lng: event.location.lng,
+        name: event.venue.displayName
       }
     });
     this.setState({
       markerLocs: venues
+
     });
   }
 
@@ -54,7 +54,8 @@ class Map extends React.Component {
     return (
       <div style={style}>
         <GoogleMapReact
-          defaultCenter={this.state.center}
+          defaultCenter={{lat: 37.783607, lng:-122.408967}}
+          center={this.props.mapCenter}
           defaultZoom={this.state.zoom}
         >
           {markers}
