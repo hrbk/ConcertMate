@@ -32,7 +32,7 @@ router.get('/login', (req, res) => {
 
 //callback route
 router.get('/callback', (req, res) => {
-	res.redirect(`http://localhost:${port}/`);
+	res.redirect('/');	
 });
 
 //save token
