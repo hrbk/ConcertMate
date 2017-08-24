@@ -2,6 +2,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import {Navbar, FormGroup, FormControl, Button} from 'react-bootstrap';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import axios from 'axios';
 
 // ignore the fact that this is called Favorites but the file is called Filters
@@ -13,48 +14,51 @@ class Favorites extends React.Component {
       radius: 5,
       search: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleSearch(text) {
+  handleSearch(search) {
     this.setState({
-      search: text.target.value
+      search
     });
   }
 
   // beginning of search functionality. we wanted to implement google search to be able to
   // autocomplete addresses but hey that's your job now
-  handleSubmit() {
-    let context = this;
-    axios.post('/google/search', {
-        loc: this.state.search
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((res) => {
-        context.setState({
-          search: ''
-        });
-      })
+  handleSubmit(loc) {
+    geocodeByAddress(loc)
+    .then(results => getLatLng(results[0]))
+    .then(latLng => {
+      let userLoc = {
+        lat: latLng.lat,
+        lng: latLng.lng
+      }
+      this.props.requestEvents(this.props.startDate, userLoc.lat, userLoc.lng);
+    })
+    .catch(error => console.log('error', error))
+    console.log(this.state.search)
   }
 
   render() {
-
     const datepicker =  {
       paddingTop: '3.5px'
-
-
     }
-
+    const inputProps = {
+      value: this.state.search,
+      onChange: this.handleSearch,
+      class: 'search_input',
+      placeholder: 'location',
+    }
     return (
       <div>
         <Navbar bsStyle="info">
           <Navbar.Form pullLeft>
-            <FormGroup>
-              <FormControl type="text" placeholder="Location..." onChange={this.handleSearch.bind(this)}/>
-            </FormGroup>
-            {' '}
-            <Button type="submit" onClick={this.handleSubmit.bind(this)}>Submit</Button>
+            <PlacesAutocomplete
+              onEnterKeyDown={this.handleSubmit}
+              inputProps={inputProps}
+              highlightFirstSuggestion={true}
+              googleLogo={false}/>
           </Navbar.Form>
           <Navbar.Form>
           <div style={datepicker}>
@@ -71,4 +75,3 @@ class Favorites extends React.Component {
 };
 
 export default Favorites;
-

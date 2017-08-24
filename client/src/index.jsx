@@ -27,11 +27,12 @@ class App extends React.Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleArtistClick = this.handleArtistClick.bind(this);
     this.handleHover = this.handleHover.bind(this);
+    this.requestSongkickEvents = this.requestSongkickEvents.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.authenticateSpotify();
-    this.requestSongkickEvents();
+    this.requestSongkickEvents(this.state.startDate, this.state.mapCenter.lat, this.state.mapCenter.lng);
   }
 
   authenticateSpotify() {
@@ -110,33 +111,29 @@ class App extends React.Component {
   }
 
 
-  requestSongkickEvents(date) {
-    let formattedDate = this.state.startDate.format('YYYY-MM-DD');
-    let latitude = this.state.mapCenter.lat;
-    let longitude = this.state.mapCenter.lng;
-    if (date) {
-      formattedDate = date.format('YYYY-MM-DD')
-    }
+  requestSongkickEvents(date, lat, lng) {
+    let formattedDate = date.format('YYYY-MM-DD');
+    let latitude = lat;
+    let longitude = lng;
     axios.post('/songkick/', {
       date: formattedDate,
       lat: latitude,
       lng: longitude
     })
-      .then((data) => {
-        console.log('data received', data.data)
-        this.setState({
-          events: data.data,
-          artist: data.data[0].headline
-        });
-        this.requestArtistId();
-        console.log('state:', this.state.events);
+    .then((data) => {
+      this.setState({
+        events: data.data,
+        artist: data.data[0].headline,
+        mapCenter: {lat: latitude, lng: longitude}
       })
-      .catch((err) => {
-        console.log('Error: ', err);
-      });
+      this.requestArtistId();
+    })
+    .catch((err) => {
+      console.log('Error: ', err);
+    });
   }
 
- render() {
+  render() {
 
     const scrollbar = {
       width: 555,
@@ -161,7 +158,9 @@ class App extends React.Component {
         </Row>
         <Row>
           <Col md={12}>
-            <Filters handleDateChange={this.handleDateChange} startDate={this.state.startDate}/>
+            <Filters handleDateChange={this.handleDateChange} startDate={this.state.startDate}
+            mapCenter={this.state.mapCenter}
+            requestEvents={this.requestSongkickEvents}/>
           </Col>
         </Row>
         <Row>
@@ -183,4 +182,3 @@ class App extends React.Component {
 
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
