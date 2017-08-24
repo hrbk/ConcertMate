@@ -7,7 +7,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 let spotifyCredentials = {
 	client_id: process.env.SPOTIFY_CLIENT_ID,
 	client_secret: process.env.SPOTIFY_SECRET_ID,
-	redirect_uri: 'http://localhost:1337/spotify/callback/'
+	redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
 };
 
 let token = undefined;
@@ -23,14 +23,14 @@ router.get('/login', (req, res) => {
 	let encodedRedirectURI = encodeURIComponent(spotifyCredentials.redirect_uri);
 	let authorizeURL = `https://accounts.spotify.com/authorize?client_id=${encodedClientId}&redirect_uri=${encodedRedirectURI}&scope=user-read-private%20user-read-email&response_type=token`;
 	res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.send(authorizeURL);
 
 });
 
 //callback route
 router.get('/callback', (req, res) => {
-	res.redirect('http://localhost:1337');
+	res.redirect('http://localhost:5000/');
 });
 
 //save token
