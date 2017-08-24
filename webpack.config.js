@@ -21,5 +21,8 @@ var DIST_DIR = path.join(__dirname, 'client/dist');
              }
          ],
      },
-     devtool: 'source-map'
+     devtool: 'source-map',
+     resolveLoader: {
+       root: path.join(__dirname, 'node_modules')
+     }
  };
