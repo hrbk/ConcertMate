@@ -7,8 +7,8 @@ const ConcertEntry = (props) => {
   return (
     <ListGroupItem
       style={props.hoveredEvent === props.event.venue.displayName ? {backgroundColor: '#dddddd'} : {backgroundColor: 'initial'}}
-      header={props.event.performance[0].artist.displayName}
-      onClick={() => props.handleArtistClick(props.event.displayName)}
+      header={props.event.displayName}
+      onClick={() => props.handleArtistClick(props.event.performance[0].artist.displayName)}
       onMouseEnter={() =>  props.handleHoverChange(props.event.venue.displayName)}
       onMouseLeave={() => props.handleHoverChange()}>
       <span> {props.event.venue.displayName} on {props.event.start.date} {props.event.start.time}</span>

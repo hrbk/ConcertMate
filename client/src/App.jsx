@@ -87,7 +87,7 @@ class App extends React.Component {
     })
       .then((data) => {
         this.props.handleSetSongkickEvents(data.data);
-        this.props.handleSetArtist(data.data[0].performance[0].displayName);
+        this.props.handleSetArtist(data.data[0].performance[0].artist.displayName);
 
         this.requestArtistId();
       })
