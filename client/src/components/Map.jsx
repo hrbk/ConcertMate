@@ -17,20 +17,16 @@ const style = {
 }
 
 const Map = (props) => {
+
   let markers = props.events.map((event) => {
-    return {
-      lat: event.location.lat,
-      lng: event.location.lng,
-      name: event.venue.displayName
-    }
-  })
-  .map((loc) => {
-    return <Markers name={loc.name} lat={loc.lat} lng={loc.lng} />
+    return <Markers name={event.venue.displayName} lat={event.location.lat} lng={event.location.lng} />
   });
+
   return (
     <div style={style}>
       <GoogleMapReact
-        defaultCenter={props.mapCenter}
+        defaultCenter={{lat: 37.783607, lng:-122.408967}}
+        center={props.mapCenter}
         defaultZoom={13}>
         {markers}
       </GoogleMapReact>

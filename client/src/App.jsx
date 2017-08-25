@@ -86,9 +86,8 @@ class App extends React.Component {
       lng: longitude
     })
       .then((data) => {
-
         this.props.handleSetSongkickEvents(data.data);
-        this.props.handleSetArtist(data.data[0].headline);
+        this.props.handleSetArtist(data.data[0].performance[0].displayName);
 
         this.requestArtistId();
       })
