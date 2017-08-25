@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hrbk/ConcertMate.svg?branch=master)](https://travis-ci.org/hrbk/ConcertMate)
+
 # Project Name
 
 > Find concerts near user and generate a "preview" playlist.
