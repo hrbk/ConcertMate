@@ -3,6 +3,7 @@ import axios from 'axios';
 import ConcertEntry from './ConcertEntry.jsx';
 import {ListGroup} from 'react-bootstrap';
 import {Panel} from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 const Concerts = (props) => {
 
@@ -10,7 +11,7 @@ const Concerts = (props) => {
     <Panel collapsible defaultExpanded header="Nearby Concerts" bsStyle="info">
       <ListGroup fill>
         {props.events.map((event, i) => {
-          return <ConcertEntry event={event} key={i} />
+          return <ConcertEntry event={event} key={i} handleArtistClick={props.handleArtistClick}/>
         })}
       </ListGroup>
     </Panel>
@@ -18,4 +19,10 @@ const Concerts = (props) => {
   )
 }
 
-export default Concerts;
+const mapStateToProps = (state) => {
+  return {
+    'events': state.events
+  }
+}
+
+export default connect(mapStateToProps)(Concerts);
