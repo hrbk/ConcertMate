@@ -4,74 +4,89 @@ import moment from 'moment';
 import {Navbar, FormGroup, FormControl, Button} from 'react-bootstrap';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import axios from 'axios';
+import { setDate, setSearchTerm, setMapCenter } from '../redux/actionCreators.js';
+import { connect } from 'react-redux';
 
 // ignore the fact that this is called Favorites but the file is called Filters
-class Favorites extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      startDate: moment(),
-      radius: 5,
-      search: ''
-    }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  handleSearch(search) {
-    this.setState({
-      search
-    });
-  }
-
+const Filters = (props) => {
   // beginning of search functionality. we wanted to implement google search to be able to
   // autocomplete addresses but hey that's your job now
-  handleSubmit(loc) {
+  const handleSubmit = (loc) => {
+    
     geocodeByAddress(loc)
     .then(results => getLatLng(results[0]))
     .then(latLng => {
+
       let userLoc = {
         lat: latLng.lat,
         lng: latLng.lng
       }
-      this.props.requestEvents(this.props.startDate, userLoc.lat, userLoc.lng);
+    
+      props.handleSetMapCenter(userLoc); //set state of mapCenter prop
+      props.requestEvents(); //getSongkickEvents
+
     })
     .catch(error => console.log('error', error))
-    console.log(this.state.search)
   }
 
-  render() {
-    const datepicker =  {
-      paddingTop: '3.5px'
-    }
-    const inputProps = {
-      value: this.state.search,
-      onChange: this.handleSearch,
+  const datepicker =  {
+    paddingTop: '3.5px'
+  }
+
+  const inputProps = {
+      value: props.searchTerm,
+      onChange: props.handleSetSearchTerm,
       class: 'search_input',
       placeholder: 'location',
-    }
-    return (
-      <div>
-        <Navbar bsStyle="info">
-          <Navbar.Form pullLeft>
-            <PlacesAutocomplete
-              onEnterKeyDown={this.handleSubmit}
-              inputProps={inputProps}
-              highlightFirstSuggestion={true}
-              googleLogo={false}/>
-          </Navbar.Form>
-          <Navbar.Form>
-          <div style={datepicker}>
-        <DatePicker
-          dateFormat="MM/DD/YYYY"
-          selected={this.props.startDate}
-          onChange={this.props.handleDateChange}
-        /> </div>
-        </Navbar.Form>
-        </Navbar>
-      </div>
-    )
   }
+
+  return (
+    <div>
+      <Navbar bsStyle="info">
+        <Navbar.Form pullLeft>
+          <PlacesAutocomplete
+            onEnterKeyDown={handleSubmit}
+            inputProps={inputProps}
+            highlightFirstSuggestion={true}
+            googleLogo={false}/>
+          <Button type="submit" onClick={handleSubmit}>Submit</Button>
+        </Navbar.Form>
+        <Navbar.Form>
+        <div style={datepicker}>
+      <DatePicker
+        dateFormat="MM/DD/YYYY"
+        selected={props.date}
+        onChange={props.handleSetDate}
+      /> </div>
+      </Navbar.Form>
+      </Navbar>
+    </div>
+  )
 };
 
+<<<<<<< HEAD
 export default Favorites;
+=======
+const mapStateToProps = (state) => {
+  return {
+    'date': state.date, //allows this.props.date to exist and be accessible in component
+    'searchTerm': state.searchTerm,
+    'mapCenter': state.mapCenter
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  handleSetDate(date = moment()) { //think of this as used in place of 'this.setState()'
+    dispatch(setDate(date)); //action creator dispatched and reducers called: { type: 'SET_SPOTIFY_TOKEN', value: token } equivalent
+  },
+  handleSetSearchTerm(searchTerm = '') {
+    dispatch(setSearchTerm(searchTerm)); //no need for searchTerm.target.value bc googleAutoPlaces handles that
+  },
+  handleSetMapCenter(mapCenter) {
+    dispatch(setMapCenter(mapCenter));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+
+>>>>>>> redux refactored

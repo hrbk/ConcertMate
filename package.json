@@ -26,8 +26,10 @@
     "react-datepicker": "^0.53.0",
     "react-dom": "^15.6.1",
     "react-places-autocomplete": "^5.4.2",
+    "react-redux": "^5.0.6",
     "react-scrollbar": "^0.5.1",
     "react-scrollbar-js": "^1.0.1",
+    "redux": "^3.7.2",
     "request": "^2.81.0",
     "sequelize": "^3.21.0",
     "spotify-web-api-node": "^2.4.0",
@@ -49,6 +51,7 @@
     "css-loader": "^0.28.5",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "mocha": "^3.5.0",
+    "redux-devtools": "^3.4.0",
     "style-loader": "^0.18.2"
   },
   "scripts": {

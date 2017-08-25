@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Panel} from 'react-bootstrap'
+import { connect } from 'react-redux';
 
 const Playlist = (props) => {
 	let iframeBaseURL = 'https://open.spotify.com/embed?uri=spotify:';
@@ -20,4 +21,10 @@ const Playlist = (props) => {
 };
 
 
-export default Playlist;
+const mapStateToProps = (state) => {
+  return {
+    'artistId': state.artistId //allows this.props.artistId to exist and be accessible in component
+  }
+}
+
+export default connect(mapStateToProps)(Playlist);
