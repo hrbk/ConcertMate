@@ -64,9 +64,6 @@ const Filters = (props) => {
   )
 };
 
-<<<<<<< HEAD
-export default Favorites;
-=======
 const mapStateToProps = (state) => {
   return {
     'date': state.date, //allows this.props.date to exist and be accessible in component
@@ -88,5 +85,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
-
->>>>>>> redux refactored
