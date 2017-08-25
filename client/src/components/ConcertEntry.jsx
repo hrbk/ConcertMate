@@ -6,12 +6,12 @@ import { ListGroupItem } from 'react-bootstrap';
 const ConcertEntry = (props) => {
   return (
     <ListGroupItem
-      style={props.hoveredEvent === props.event.venue ? {backgroundColor: '#dddddd'} : {backgroundColor: 'initial'}}
+      style={props.hoveredEvent === props.event.venue.displayName ? {backgroundColor: '#dddddd'} : {backgroundColor: 'initial'}}
       header={props.event.performance[0].artist.displayName}
-      onClick={() => props.handleArtistClick(props.event.headline)}
-      onMouseEnter={() =>  props.handleHoverChange(props.event.venue)}
+      onClick={() => props.handleArtistClick(props.event.displayName)}
+      onMouseEnter={() =>  props.handleHoverChange(props.event.venue.displayName)}
       onMouseLeave={() => props.handleHoverChange()}>
-      <span> {props.event.performance[0].artist.displayName} on {props.event.date.slice(0, 10)} {props.event.time}</span>
+      <span> {props.event.venue.displayName} on {props.event.start.date} {props.event.start.time}</span>
       <a href={props.event.uri}> Buy Tickets</a>
     </ListGroupItem>
   )

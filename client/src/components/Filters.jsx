@@ -21,7 +21,6 @@ const Filters = (props) => {
         lat: latLng.lat,
         lng: latLng.lng
       }
-    
       props.handleSetMapCenter(userLoc); //set state of mapCenter prop
       props.requestEvents(); //getSongkickEvents
 
@@ -37,28 +36,32 @@ const Filters = (props) => {
       value: props.searchTerm,
       onChange: props.handleSetSearchTerm,
       class: 'search_input',
-      placeholder: 'location',
+      placeholder: 'Location'
+  }
+
+  const navStyle = {
+    display: 'flex',
+    alignItems: 'center'
   }
 
   return (
-    <div>
-      <Navbar bsStyle="info">
-        <Navbar.Form pullLeft>
+    <div className="navigation">
+      <Navbar>
+        <Navbar.Form pullLeft style={navStyle}>
           <PlacesAutocomplete
             onEnterKeyDown={handleSubmit}
             inputProps={inputProps}
             highlightFirstSuggestion={true}
             googleLogo={false}/>
-          <Button type="submit" onClick={handleSubmit}>Submit</Button>
+
+          <div style={datepicker}>
+            <DatePicker
+              dateFormat="MM/DD/YYYY"
+              selected={props.date} //automatically passed into handleSetData
+              onChange={props.handleSetDate} /> 
+          </div>
+          <Button type="submit" onClick={() => handleSubmit(props.searchTerm)}>Submit</Button>
         </Navbar.Form>
-        <Navbar.Form>
-        <div style={datepicker}>
-      <DatePicker
-        dateFormat="MM/DD/YYYY"
-        selected={props.date}
-        onChange={props.handleSetDate}
-      /> </div>
-      </Navbar.Form>
       </Navbar>
     </div>
   )
@@ -85,3 +88,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+
