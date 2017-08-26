@@ -1,47 +1,788 @@
+/* ----------------------------------------------------------------------------
+ * Mixins & Variables
+ * ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Mixins
+ * ------------------------------------------------------------------------- */
+/*
+ * Mixin for clearfix
+ * @include clearfix;
+*/
+/*
+ * @font-face mixin
+ * Bulletproof font-face via Font Squirrel
+ * @include fontface('family', 'assets/fonts/', 'myfontname');
+ */
+/**
+ * IMAGE RETINA
+ * @include image-2x(/img/image.png, 100%, auto);
+ */
+/* ----------------------------------------------------------------------------
+ * Responsive
+ * Usage
+
+    @include r(240)  { }
+    @include r(320)  { }
+    @include r(480)  { }
+    @include r(768)  { }
+    @include r(1024) { }
+    @include r(1280) { }
+
+ * ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Variables
+ * ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Colors
+ * ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Primary Color Variants
+ * ------------------------------------------------------------------------- */
+/*$color--primary: #406de4;*/
+/*$color--primary: #00BCD4;*/
+/*$color--primary: #03A9F4;*/
+/*$color--primary: #3498db;*/
+/*$color--primary: #2980b9;*/
+/*$color--primary: #3F51B5;*/
+/*$color--primary: #304FFE;*/
+/*$color--primary: #FF5722;*/
+/*$color--primary: #795548;*/
+/*$color--primary: #2ecc71;*/
+/*$color--primary: #27ae60;*/
+/*$color--primary: #35ad68;*/
+/*$color--primary: #1abc9c;*/
+/*$color--primary: #16a085;*/
+/*$color--primary: #9b59b6;*/
+/*$color--primary: #8e44ad;*/
+/*$color--primary: #673AB7;*/
+/*$color--primary: #FFA000;*/
+/*$color--primary: #FBC02D;*/
+/*$color--primary: #f1c40f;*/
+/*$color--primary: #f39c12;*/
+/*$color--primary: #e67e22;*/
+/*$color--primary: #d35400;*/
+/*$color--primary: #e74c3c;*/
+/*$color--primary: #c0392b;*/
+/*$color--primary: #f44336;*/
+/*$color--primary: #34495e;*/
+/*$color--primary: #607D8B;*/
+/* ----------------------------------------------------------------------------
+ * Normalize & Santize
+ * ------------------------------------------------------------------------- */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+ html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0; }
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block; }
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none; }
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent; }
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0; }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold; }
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic; }
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  margin: 0.67em 0; }
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000; }
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0; }
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto; }
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible; }
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none; }
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal; }
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  box-sizing: content-box;
+  /* 2 */ }
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold; }
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+/*! sanitize.css | CC0 Public Domain | github.com/jonathantneal/sanitize.css */
+/*
+ * Normalization
+ */
+:root {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-y: scroll;
+  text-size-adjust: 100%; }
+
+audio:not([controls]) {
+  display: none; }
+
+details {
+  display: block; }
+
+input[type="number"] {
+  width: auto; }
+
+input[type="search"] {
+  -webkit-appearance: textfield; }
+  input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+
+main {
+  display: block; }
+
+summary {
+  display: block; }
+
+pre {
+  overflow: auto; }
+
+progress {
+  display: inline-block; }
+
+small {
+  font-size: 75%; }
+
+template {
+  display: none; }
+
+textarea {
+  overflow: auto; }
+
+[hidden] {
+  display: none; }
+
+[unselectable] {
+  user-select: none; }
+
+/*
+ * Universal inheritance
+ */
+*,
+::before,
+::after {
+  box-sizing: inherit; }
+
+* {
+  font-size: inherit;
+  line-height: inherit; }
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit; }
+
+/*
+ * Opinionated defaults
+ */
+*,
+::before,
+::after {
+  border-style: solid;
+  border-width: 0; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+:root {
+  box-sizing: border-box;
+  cursor: default;
+  font: 16px/1.5 sans-serif;
+  text-rendering: optimizeLegibility; }
+
+html {
+  background-color: #FFFFFF; }
+
+a {
+  text-decoration: none; }
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle; }
+
+button,
+input,
+select,
+textarea {
+  background-color: transparent; }
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit; }
+
+button,
+[type="button"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="reset"],
+[type="search"],
+[type="submit"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+select,
+textarea {
+  min-height: 1.5em; }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace; }
+
+nav ol,
+nav ul {
+  list-style: none; }
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none; }
+  select::-ms-expand {
+    display: none; }
+  select::-ms-value {
+    color: currentColor; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+textarea {
+  resize: vertical; }
+
+::selection {
+  background-color: #B3D4FC;
+  text-shadow: none; }
+
+@media screen {
+  [hidden~="screen"] {
+    display: inherit; }
+  [hidden~="screen"]:not(:active):not(:focus):not(:target) {
+    clip: rect(0 0 0 0) !important;
+    position: absolute !important; } }
+
+/* ----------------------------------------------------------------------------
+ * Structure
+ * ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Structure
+ * ------------------------------------------------------------------------- */
+/* global box-sizing */
+*,
+*:after,
+*:before {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; }
+
+html {
+  height: 100%;
+  min-height: 100%; }
+
+body {
+  font: 400 11px/1.4 sans-serif;
+  color: #292929;
+  margin: 0;
+  background: #ffffff !important;
+  height: 100%;
+  min-height: 100%; }
+
+/* clear */
+.clear:before,
+.clear:after {
+  content: ' ';
+  display: table; }
+
+.clear:after {
+  clear: both; }
+
+.clear {
+  *zoom: 1; }
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+  height: auto; }
+
+a {
+  color: #444;
+  text-decoration: none; }
+
+a:hover {
+  color: #444; }
+
+a:focus {
+  outline: 0; }
+
+a:hover,
+a:active {
+  outline: 0; }
+
+input:focus {
+  outline: 0;
+  border: 1px solid #292929; }
+
+select {
+  width: 100%; }
+
+/* Base */
+/**
+ * Base SCSS
+ */
+.wrap {
+  display: table;
+  width: 100%;
+  height: 100%;
+  font-size: 5vh;
+  padding: 3vh;
+  background: #ED4846;
+  color: #ffffff; }
+
+.content {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: center; }
+  .content h1,
+  .content p {
+    font-family: Lato;
+    font-weight: 100; }
+    @media (min-width: 240px) {
+      .content h1,
+      .content p {
+        font-weight: 100; } }
+    @media (min-width: 320px) {
+      .content h1,
+      .content p {
+        font-weight: 100; } }
+    @media (min-width: 480px) {
+      .content h1,
+      .content p {
+        font-weight: 100; } }
+    @media (min-width: 768px) {
+      .content h1,
+      .content p {
+        font-weight: 100; } }
+    @media (min-width: 1024px) {
+      .content h1,
+      .content p {
+        font-weight: 100; } }
+    @media (min-width: 1280px) {
+      .content h1,
+      .content p {
+        font-weight: 100; } }
+  .content h1 {
+    text-transform: uppercase; }
+    @media (min-width: 240px) {
+      .content h1 {
+        text-transform: uppercase; } }
+    @media (min-width: 320px) {
+      .content h1 {
+        text-transform: uppercase; } }
+    @media (min-width: 480px) {
+      .content h1 {
+        text-transform: uppercase; } }
+    @media (min-width: 768px) {
+      .content h1 {
+        text-transform: uppercase; } }
+    @media (min-width: 1024px) {
+      .content h1 {
+        text-transform: uppercase; } }
+    @media (min-width: 1280px) {
+      .content h1 {
+        text-transform: uppercase; } }
+
+/* Components */
+#PlacesAutocomplete__autocomplete-container,
+.react-datepicker-wrapper, .react-datepicker-popper {
+  z-index: 9; }
 
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow {
   margin-left: -8px;
   position: absolute; }
-  .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
-  .react-datepicker__month-read-view--down-arrow, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
-  .react-datepicker__month-read-view--down-arrow::before {
-    box-sizing: content-box;
-    position: absolute;
-    border: 8px solid transparent;
-    height: 0;
-    width: 1px; }
-  .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
-  .react-datepicker__month-read-view--down-arrow::before {
-    content: "";
-    z-index: -1;
-    border-width: 8px;
-    left: -8px;
-    border-bottom-color: #aeaeae; }
+
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
+.react-datepicker__month-read-view--down-arrow::before {
+  box-sizing: content-box;
+  position: absolute;
+  border: 8px solid transparent;
+  height: 0;
+  width: 1px; }
+
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
+.react-datepicker__month-read-view--down-arrow::before {
+  content: "";
+  z-index: -1;
+  border-width: 8px;
+  left: -8px;
+  border-bottom-color: #aeaeae; }
 
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
   top: 0;
   margin-top: -8px; }
-  .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
-    border-top: none;
-    border-bottom-color: #f0f0f0; }
-  .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
-    top: -1px;
-    border-bottom-color: #aeaeae; }
+
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
+  border-top: none;
+  border-bottom-color: #f0f0f0; }
+
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
+  top: -1px;
+  border-bottom-color: #aeaeae; }
 
 .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow {
   bottom: 0;
   margin-bottom: -8px; }
-  .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
-  .react-datepicker__month-read-view--down-arrow, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
-  .react-datepicker__month-read-view--down-arrow::before {
-    border-bottom: none;
-    border-top-color: #fff; }
-  .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
-  .react-datepicker__month-read-view--down-arrow::before {
-    bottom: -1px;
-    border-top-color: #aeaeae; }
+
+.react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
+.react-datepicker__month-read-view--down-arrow::before {
+  border-bottom: none;
+  border-top-color: #fff; }
+
+.react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before,
+.react-datepicker__month-read-view--down-arrow::before {
+  bottom: -1px;
+  border-top-color: #aeaeae; }
 
 .react-datepicker-wrapper {
   display: inline-block; }
@@ -62,20 +803,26 @@
 
 .react-datepicker-popper {
   z-index: 1; }
-  .react-datepicker-popper[data-placement^="bottom"] {
-    margin-top: 10px; }
-  .react-datepicker-popper[data-placement^="top"] {
-    margin-bottom: 6px; }
-  .react-datepicker-popper[data-placement^="right"] {
-    margin-left: 8px; }
-    .react-datepicker-popper[data-placement^="right"] .react-datepicker__triangle {
-      left: auto;
-      right: 42px; }
-  .react-datepicker-popper[data-placement^="left"] {
-    margin-right: 8px; }
-    .react-datepicker-popper[data-placement^="left"] .react-datepicker__triangle {
-      left: 42px;
-      right: auto; }
+
+.react-datepicker-popper[data-placement^="bottom"] {
+  margin-top: 10px; }
+
+.react-datepicker-popper[data-placement^="top"] {
+  margin-bottom: 6px; }
+
+.react-datepicker-popper[data-placement^="right"] {
+  margin-left: 8px; }
+
+.react-datepicker-popper[data-placement^="right"] .react-datepicker__triangle {
+  left: auto;
+  right: 42px; }
+
+.react-datepicker-popper[data-placement^="left"] {
+  margin-right: 8px; }
+
+.react-datepicker-popper[data-placement^="left"] .react-datepicker__triangle {
+  left: 42px;
+  right: auto; }
 
 .react-datepicker__header {
   text-align: center;
@@ -108,32 +855,41 @@
   width: 0;
   border: 0.45rem solid transparent;
   z-index: 1; }
-  .react-datepicker__navigation--previous {
-    left: 10px;
-    border-right-color: #ccc; }
-    .react-datepicker__navigation--previous:hover {
-      border-right-color: #b3b2b2; }
-  .react-datepicker__navigation--next {
-    right: 10px;
-    border-left-color: #ccc; }
-    .react-datepicker__navigation--next:hover {
-      border-left-color: #b3b2b2; }
-  .react-datepicker__navigation--years {
-    position: relative;
-    top: 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto; }
-    .react-datepicker__navigation--years-previous {
-      top: 4px;
-      border-top-color: #ccc; }
-      .react-datepicker__navigation--years-previous:hover {
-        border-top-color: #b3b2b2; }
-    .react-datepicker__navigation--years-upcoming {
-      top: -4px;
-      border-bottom-color: #ccc; }
-      .react-datepicker__navigation--years-upcoming:hover {
-        border-bottom-color: #b3b2b2; }
+
+.react-datepicker__navigation--previous {
+  left: 10px;
+  border-right-color: #ccc; }
+
+.react-datepicker__navigation--previous:hover {
+  border-right-color: #b3b2b2; }
+
+.react-datepicker__navigation--next {
+  right: 10px;
+  border-left-color: #ccc; }
+
+.react-datepicker__navigation--next:hover {
+  border-left-color: #b3b2b2; }
+
+.react-datepicker__navigation--years {
+  position: relative;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.react-datepicker__navigation--years-previous {
+  top: 4px;
+  border-top-color: #ccc; }
+
+.react-datepicker__navigation--years-previous:hover {
+  border-top-color: #b3b2b2; }
+
+.react-datepicker__navigation--years-upcoming {
+  top: -4px;
+  border-bottom-color: #ccc; }
+
+.react-datepicker__navigation--years-upcoming:hover {
+  border-bottom-color: #b3b2b2; }
 
 .react-datepicker__month-container {
   display: inline;
@@ -150,11 +906,13 @@
   line-height: 1.7rem;
   text-align: center;
   margin: 0.166rem; }
-  .react-datepicker__week-number.react-datepicker__week-number--clickable {
-    cursor: pointer; }
-    .react-datepicker__week-number.react-datepicker__week-number--clickable:hover {
-      border-radius: 0.3rem;
-      background-color: #f0f0f0; }
+
+.react-datepicker__week-number.react-datepicker__week-number--clickable {
+  cursor: pointer; }
+
+.react-datepicker__week-number.react-datepicker__week-number--clickable:hover {
+  border-radius: 0.3rem;
+  background-color: #f0f0f0; }
 
 .react-datepicker__day-name,
 .react-datepicker__day {
@@ -167,43 +925,57 @@
 
 .react-datepicker__day {
   cursor: pointer; }
-  .react-datepicker__day:hover {
-    border-radius: 0.3rem;
-    background-color: #f0f0f0; }
-  .react-datepicker__day--today {
-    font-weight: bold; }
-  .react-datepicker__day--highlighted {
-    border-radius: 0.3rem;
-    background-color: #3dcc4a;
-    color: #fff; }
-    .react-datepicker__day--highlighted:hover {
-      background-color: #32be3f; }
-    .react-datepicker__day--highlighted-custom-1 {
-      color: magenta; }
-    .react-datepicker__day--highlighted-custom-2 {
-      color: green; }
-  .react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range {
-    border-radius: 0.3rem;
-    background-color: #216ba5;
-    color: #fff; }
-    .react-datepicker__day--selected:hover, .react-datepicker__day--in-selecting-range:hover, .react-datepicker__day--in-range:hover {
-      background-color: #1d5d90; }
-  .react-datepicker__day--keyboard-selected {
-    border-radius: 0.3rem;
-    background-color: #2a87d0;
-    color: #fff; }
-    .react-datepicker__day--keyboard-selected:hover {
-      background-color: #1d5d90; }
-  .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
-    background-color: rgba(33, 107, 165, 0.5); }
-  .react-datepicker__month--selecting-range .react-datepicker__day--in-range:not(.react-datepicker__day--in-selecting-range) {
-    background-color: #f0f0f0;
-    color: #000; }
-  .react-datepicker__day--disabled {
-    cursor: default;
-    color: #ccc; }
-    .react-datepicker__day--disabled:hover {
-      background-color: transparent; }
+
+.react-datepicker__day:hover {
+  border-radius: 0.3rem;
+  background-color: #f0f0f0; }
+
+.react-datepicker__day--today {
+  font-weight: bold; }
+
+.react-datepicker__day--highlighted {
+  border-radius: 0.3rem;
+  background-color: #3dcc4a;
+  color: #fff; }
+
+.react-datepicker__day--highlighted:hover {
+  background-color: #32be3f; }
+
+.react-datepicker__day--highlighted-custom-1 {
+  color: magenta; }
+
+.react-datepicker__day--highlighted-custom-2 {
+  color: green; }
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range {
+  border-radius: 0.3rem;
+  background-color: #216ba5;
+  color: #fff; }
+
+.react-datepicker__day--selected:hover, .react-datepicker__day--in-selecting-range:hover, .react-datepicker__day--in-range:hover {
+  background-color: #1d5d90; }
+
+.react-datepicker__day--keyboard-selected {
+  border-radius: 0.3rem;
+  background-color: #2a87d0;
+  color: #fff; }
+
+.react-datepicker__day--keyboard-selected:hover {
+  background-color: #1d5d90; }
+
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
+  background-color: rgba(33, 107, 165, 0.5); }
+
+.react-datepicker__month--selecting-range .react-datepicker__day--in-range:not(.react-datepicker__day--in-selecting-range) {
+  background-color: #f0f0f0;
+  color: #000; }
+
+.react-datepicker__day--disabled {
+  cursor: default;
+  color: #ccc; }
+
+.react-datepicker__day--disabled:hover {
+  background-color: transparent; }
 
 .react-datepicker__input-container {
   position: relative;
@@ -213,22 +985,25 @@
 .react-datepicker__month-read-view {
   border: 1px solid transparent;
   border-radius: 0.3rem; }
-  .react-datepicker__year-read-view:hover,
-  .react-datepicker__month-read-view:hover {
-    cursor: pointer; }
-    .react-datepicker__year-read-view:hover .react-datepicker__year-read-view--down-arrow,
-    .react-datepicker__year-read-view:hover .react-datepicker__month-read-view--down-arrow,
-    .react-datepicker__month-read-view:hover .react-datepicker__year-read-view--down-arrow,
-    .react-datepicker__month-read-view:hover .react-datepicker__month-read-view--down-arrow {
-      border-top-color: #b3b2b2; }
-  .react-datepicker__year-read-view--down-arrow,
-  .react-datepicker__month-read-view--down-arrow {
-    border-top-color: #ccc;
-    float: right;
-    margin-left: 20px;
-    top: 8px;
-    position: relative;
-    border-width: 0.45rem; }
+
+.react-datepicker__year-read-view:hover,
+.react-datepicker__month-read-view:hover {
+  cursor: pointer; }
+
+.react-datepicker__year-read-view:hover .react-datepicker__year-read-view--down-arrow,
+.react-datepicker__year-read-view:hover .react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-read-view:hover .react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view:hover .react-datepicker__month-read-view--down-arrow {
+  border-top-color: #b3b2b2; }
+
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow {
+  border-top-color: #ccc;
+  float: right;
+  margin-left: 20px;
+  top: 8px;
+  position: relative;
+  border-width: 0.45rem; }
 
 .react-datepicker__year-dropdown,
 .react-datepicker__month-dropdown {
@@ -241,13 +1016,15 @@
   text-align: center;
   border-radius: 0.3rem;
   border: 1px solid #aeaeae; }
-  .react-datepicker__year-dropdown:hover,
-  .react-datepicker__month-dropdown:hover {
-    cursor: pointer; }
-  .react-datepicker__year-dropdown--scrollable,
-  .react-datepicker__month-dropdown--scrollable {
-    height: 150px;
-    overflow-y: scroll; }
+
+.react-datepicker__year-dropdown:hover,
+.react-datepicker__month-dropdown:hover {
+  cursor: pointer; }
+
+.react-datepicker__year-dropdown--scrollable,
+.react-datepicker__month-dropdown--scrollable {
+  height: 150px;
+  overflow-y: scroll; }
 
 .react-datepicker__year-option,
 .react-datepicker__month-option {
@@ -256,31 +1033,37 @@
   display: block;
   margin-left: auto;
   margin-right: auto; }
-  .react-datepicker__year-option:first-of-type,
-  .react-datepicker__month-option:first-of-type {
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem; }
-  .react-datepicker__year-option:last-of-type,
-  .react-datepicker__month-option:last-of-type {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border-bottom-left-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem; }
-  .react-datepicker__year-option:hover,
-  .react-datepicker__month-option:hover {
-    background-color: #ccc; }
-    .react-datepicker__year-option:hover .react-datepicker__navigation--years-upcoming,
-    .react-datepicker__month-option:hover .react-datepicker__navigation--years-upcoming {
-      border-bottom-color: #b3b2b2; }
-    .react-datepicker__year-option:hover .react-datepicker__navigation--years-previous,
-    .react-datepicker__month-option:hover .react-datepicker__navigation--years-previous {
-      border-top-color: #b3b2b2; }
-  .react-datepicker__year-option--selected,
-  .react-datepicker__month-option--selected {
-    position: absolute;
-    left: 15px; }
+
+.react-datepicker__year-option:first-of-type,
+.react-datepicker__month-option:first-of-type {
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem; }
+
+.react-datepicker__year-option:last-of-type,
+.react-datepicker__month-option:last-of-type {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem; }
+
+.react-datepicker__year-option:hover,
+.react-datepicker__month-option:hover {
+  background-color: #ccc; }
+
+.react-datepicker__year-option:hover .react-datepicker__navigation--years-upcoming,
+.react-datepicker__month-option:hover .react-datepicker__navigation--years-upcoming {
+  border-bottom-color: #b3b2b2; }
+
+.react-datepicker__year-option:hover .react-datepicker__navigation--years-previous,
+.react-datepicker__month-option:hover .react-datepicker__navigation--years-previous {
+  border-top-color: #b3b2b2; }
+
+.react-datepicker__year-option--selected,
+.react-datepicker__month-option--selected {
+  position: absolute;
+  left: 15px; }
 
 .react-datepicker__close-icon {
   background-color: transparent;
@@ -291,24 +1074,25 @@
   outline: 0;
   padding: 0;
   vertical-align: middle; }
-  .react-datepicker__close-icon::after {
-    background-color: #216ba5;
-    border-radius: 50%;
-    bottom: 0;
-    box-sizing: border-box;
-    color: #fff;
-    content: "\00d7";
-    cursor: pointer;
-    font-size: 12px;
-    height: 16px;
-    width: 16px;
-    line-height: 1;
-    margin: -8px auto 0;
-    padding: 2px;
-    position: absolute;
-    right: 7px;
-    text-align: center;
-    top: 50%; }
+
+.react-datepicker__close-icon::after {
+  background-color: #216ba5;
+  border-radius: 50%;
+  bottom: 0;
+  box-sizing: border-box;
+  color: #fff;
+  content: "\D7";
+  cursor: pointer;
+  font-size: 12px;
+  height: 16px;
+  width: 16px;
+  line-height: 1;
+  margin: -8px auto 0;
+  padding: 2px;
+  position: absolute;
+  right: 7px;
+  text-align: center;
+  top: 50%; }
 
 .react-datepicker__today-button {
   background: #f0f0f0;
@@ -330,24 +1114,67 @@
   align-items: center;
   display: flex;
   z-index: 2147483647; }
+
+.react-datepicker__portal .react-datepicker__day-name,
+.react-datepicker__portal .react-datepicker__day {
+  width: 3rem;
+  line-height: 3rem; }
+
+@media (max-width: 400px), (max-height: 550px) {
   .react-datepicker__portal .react-datepicker__day-name,
   .react-datepicker__portal .react-datepicker__day {
-    width: 3rem;
-    line-height: 3rem; }
-  @media (max-width: 400px), (max-height: 550px) {
-    .react-datepicker__portal .react-datepicker__day-name,
-    .react-datepicker__portal .react-datepicker__day {
-      width: 2rem;
-      line-height: 2rem; } }
-  .react-datepicker__portal .react-datepicker__current-month {
-    font-size: 1.44rem; }
-  .react-datepicker__portal .react-datepicker__navigation {
-    border: 0.81rem solid transparent; }
-  .react-datepicker__portal .react-datepicker__navigation--previous {
-    border-right-color: #ccc; }
-    .react-datepicker__portal .react-datepicker__navigation--previous:hover {
-      border-right-color: #b3b2b2; }
-  .react-datepicker__portal .react-datepicker__navigation--next {
-    border-left-color: #ccc; }
-    .react-datepicker__portal .react-datepicker__navigation--next:hover {
-      border-left-color: #b3b2b2; }
+    width: 2rem;
+    line-height: 2rem; } }
+
+.react-datepicker__portal .react-datepicker__current-month {
+  font-size: 1.44rem; }
+
+.react-datepicker__portal .react-datepicker__navigation {
+  border: 0.81rem solid transparent; }
+
+.react-datepicker__portal .react-datepicker__navigation--previous {
+  border-right-color: #ccc; }
+
+.react-datepicker__portal .react-datepicker__navigation--previous:hover {
+  border-right-color: #b3b2b2; }
+
+.react-datepicker__portal .react-datepicker__navigation--next {
+  border-left-color: #ccc; }
+
+.react-datepicker__portal .react-datepicker__navigation--next:hover {
+  border-left-color: #b3b2b2; }
+
+.concert-mate-app #map {
+  height: 100%;
+  width: 100%; }
+
+.concert-mate-app .map-container {
+  height: 92.6vh;
+  width: 100%; }
+
+.concert-mate-app .navigation > .navbar {
+  margin-bottom: 0; }
+
+.concert-mate-app .navbar-brand small {
+  margin-left: 5px; }
+
+.playlist-container {
+  position: fixed;
+  width: 360px;
+  bottom: 0;
+  right: 60px; }
+  .playlist-container .panel {
+    border: none;
+    margin-bottom: 0; }
+  .playlist-container .panel-success {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .playlist-container .panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
+  .playlist-container .panel-success > .panel-heading {
+    border: none; }
+
+@media screen and (max-width: 767px) {
+  .playlist-container {
+    height: 300px; } }
