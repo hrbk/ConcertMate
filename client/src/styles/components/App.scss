@@ -14,7 +14,12 @@
     margin-left: 5px;
   }
 }
-
+input {
+  font-size: 12px;
+}
+#PlacesAutocomplete__root {
+  margin: 5px;
+}
 .playlist-container {
   position: fixed;
   width: 360px;
