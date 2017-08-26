@@ -14,14 +14,12 @@ const Events = seq.define('events', {
   date: Sequelize.STRING,
   venue: Sequelize.STRING,
   latitude: Sequelize.STRING,
-  longitude: Sequelize.STRING
+  longitude: Sequelize.STRING,
+  city: Sequelize.STRING,
+  metroArea: Sequelize.STRING,
+  searchCity: Sequelize.STRING,
+  popularity: Sequelize.INTEGER
 });
-
-
-Events.sync({force: false}).then(() => {
-  console.log('Created "events" table');
-});
-
 
 seq
   .authenticate()
@@ -32,7 +30,21 @@ seq
     console.log('error connecting to DB ', err);
   });
 
-let createEvent = (event) => {
+let getMetroArea = (city) => {
+  return Events.findOne({
+    where: {
+      searchCity: city
+    },
+    raw: true
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log('error retrieving metroArea', error);
+  });
+}
+let createEvent = (event, searchCity) => {
   return Events.create({
     displayName: event.displayName,
     headline: event.performance[0].displayName,
@@ -41,10 +53,13 @@ let createEvent = (event) => {
     date: event.start.date,
     venue: event.venue.displayName,
     latitude: event.location.lat,
-    longitude: event.location.lng
+    longitude: event.location.lng,
+    city: event.location.city,
+    metroArea: event.venue.metroArea.displayName,
+    popularity: event.popularity,
+    searchCity: searchCity
   });
 }
-
 let getEvents = (date, lat, lng, callback) => {
   return Events.findAll({
     where: {
@@ -62,3 +77,4 @@ let getEvents = (date, lat, lng, callback) => {
 
 module.exports.createEvent = createEvent;
 module.exports.getEvents = getEvents;
+module.exports.getMetroArea = getMetroArea;
