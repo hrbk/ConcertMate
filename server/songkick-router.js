@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
   let lng = req.body.lng;
   let city = req.body.city;
   let url = `http://api.songkick.com/api/3.0/events.json?apikey=${apiKey}&location=geo:${lat},${lng}&min_date=${date}&max_date=${date}`;
-  //
+  
   // db.getMetroArea(city)
   // .then((data) => {
   //   if (data === undefined) {
@@ -36,7 +36,6 @@ router.post('/', (req, res) => {
   // .catch((error) => {
   //   console.log('nonono');
   // })
-  //
 
 
 
