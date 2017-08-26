@@ -15,30 +15,6 @@ router.post('/', (req, res) => {
   let lng = req.body.lng;
   let city = req.body.city;
   let url = `http://api.songkick.com/api/3.0/events.json?apikey=${apiKey}&location=geo:${lat},${lng}&min_date=${date}&max_date=${date}`;
-  
-  // db.getMetroArea(city)
-  // .then((data) => {
-  //   if (data === undefined) {
-  //     console.log('happy happy fun time');
-  //     axios.get(url)
-  //     .then((events) => {
-  //       let searchCity = city || 'San Francisco, CA, United States';
-  //       console.log('THE CITY', searchCity);
-  //       let data = events.data.resultsPage.results.event;
-  //       async.each(data, (event, callback) => {
-  //         db.createEvent(event, searchCity);
-  //         console.log('events', event);
-  //       })
-  //       res.send(data);
-  //     })
-  //   }
-  // })
-  // .catch((error) => {
-  //   console.log('nonono');
-  // })
-
-
-
 
   axios.get(url)
   .then((events) => {
@@ -47,13 +23,23 @@ router.post('/', (req, res) => {
     //component mount.
     let searchCity = city || 'San Francisco, CA, United States';
     let data = events.data.resultsPage.results.event;
-    async.each(data, (event, callback) => {
-
-      db.createEvent(event, searchCity);
-      console.log('event saved: ', event);
-    })
-    res.send(data);
-  });
+    return data.map((event) => ({
+      displayName: event.displayName,
+      headline: event.performance[0].displayName,
+      uri: event.uri,
+      time: event.start.time,
+      date: event.start.date,
+      venue: event.venue.displayName,
+      latitude: event.location.lat,
+      longitude: event.location.lng,
+      city: event.location.city,
+      metroArea: event.venue.metroArea.displayName,
+      popularity:event.popularity,
+      searchCity: searchCity
+    }))
+  })
+  .then(events => {
+    res.send(events);
 });
 
 module.exports = router;
