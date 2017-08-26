@@ -40,6 +40,7 @@ router.post('/', (req, res) => {
   })
   .then(events => {
     res.send(events);
+  });
 });
 
 module.exports = router;

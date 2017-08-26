@@ -95,6 +95,9 @@ class App extends React.Component {
       });
   }
 
+  popularityFilter() {
+    console.log('EVENTS', this.props.events);
+  }
 
  render() {
     const scrollbar = {
@@ -131,7 +134,7 @@ class App extends React.Component {
         <div className="playlist-container">
           <Playlist />
           <ReactScrollbar style={scrollbar}>
-            <Concerts events={this.props.events} handleArtistClick={this.handleArtistClick}/>
+            <Concerts events={this.props.events} handleArtistClick={this.handleArtistClick} popularityFilter={this.popularityFilter}/>
           </ReactScrollbar>
         </div>
       </div>

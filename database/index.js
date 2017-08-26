@@ -73,7 +73,7 @@ let getEvents = (date, lat, lng, callback) => {
   .catch((error) => {
     console.log("Error getting events: ", error);
   })
-};
+}
 
 module.exports.createEvent = createEvent;
 module.exports.getEvents = getEvents;
