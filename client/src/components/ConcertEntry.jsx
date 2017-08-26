@@ -6,12 +6,12 @@ import { ListGroupItem } from 'react-bootstrap';
 const ConcertEntry = (props) => {
   return (
     <ListGroupItem
-      style={props.hoveredEvent === props.event.venue.displayName ? {backgroundColor: '#dddddd'} : {backgroundColor: 'initial'}}
+      style={props.hoveredEvent === props.event.venue ? {backgroundColor: '#dddddd'} : {backgroundColor: 'initial'}}
       header={props.event.displayName}
-      onClick={() => props.handleArtistClick(props.event.performance[0].artist.displayName)}
-      onMouseEnter={() =>  props.handleHoverChange(props.event.venue.displayName)}
+      onClick={() => props.handleArtistClick(props.event.headline)}
+      onMouseEnter={() =>  props.handleHoverChange(props.event.venue)}
       onMouseLeave={() => props.handleHoverChange()}>
-      <span> {props.event.venue.displayName} on {props.event.start.date} {props.event.start.time}</span>
+      <span> {props.event.venue} on {props.event.date} {props.event.time}</span>
       <a href={props.event.uri}> Buy Tickets</a>
     </ListGroupItem>
   )
@@ -31,4 +31,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConcertEntry);
-
