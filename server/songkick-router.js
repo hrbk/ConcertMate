@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
       longitude: event.location.lng,
       city: event.location.city,
       metroArea: event.venue.metroArea.displayName,
-      popularity:event.popularity,
+      popularity:event.popularity * 100000,
       searchCity: searchCity
     }))
   })
