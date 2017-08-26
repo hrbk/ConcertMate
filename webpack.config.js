@@ -34,6 +34,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
                     }
                 ))
             },
+            {
+               test: /\.(png|jpg)$/,
+               loader: 'url-loader'
+            }
          ],
      },
      plugins: [
