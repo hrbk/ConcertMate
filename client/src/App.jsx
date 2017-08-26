@@ -83,9 +83,11 @@ class App extends React.Component {
     axios.post('/songkick/', {
       date: formattedDate,
       lat: latitude,
-      lng: longitude
+      lng: longitude,
+      city: this.props.searchTerm
     })
       .then((data) => {
+        console.log('DATA FROM CITIES DB', data);
         this.props.handleSetSongkickEvents(data.data);
         this.props.handleSetArtist(data.data[0].performance[0].artist.displayName);
 
@@ -96,8 +98,8 @@ class App extends React.Component {
       });
   }
 
- render() {
 
+ render() {
     const scrollbar = {
       width: '100%',
       height: '290',
@@ -148,7 +150,8 @@ const mapStateToProps = (state) => {
     'artist': state.artist,
     'events': state.events,
     'artistId': state.artistId,
-    'mapCenter': state.mapCenter
+    'mapCenter': state.mapCenter,
+    'searchTerm': state.searchTerm
   }
 }
 
