@@ -1,6 +1,4 @@
 const Sequelize = require('sequelize');
-// const credentials = require('./config/js');
-// let user = credentials.login
 
 const seq = new Sequelize(process.env.DATABASE_NAME, process.env.DATABESE_USERNAME, process.env.DATABASE_PASSWORD, {
   host: process.env.DATABSE_HOST,
