@@ -7,10 +7,10 @@ import Map from './components/Map.jsx';
 import Playlist from './components/Playlist.jsx';
 import Concerts from './components/Concerts.jsx';
 import ReactScrollbar from 'react-scrollbar-js';
-import {PageHeader} from 'react-bootstrap';
+import { PageHeader, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setSpotifyToken, setArtist, setSongkickEvents, setArtistId } from './redux/actionCreators.js';
-
+import './styles/main.scss';
 
 class App extends React.Component {
   constructor(props) {
@@ -99,8 +99,8 @@ class App extends React.Component {
  render() {
 
     const scrollbar = {
-      width: 555,
-      height: 290,
+      width: '100%',
+      height: '290',
     };
 
     const header = {
@@ -111,31 +111,31 @@ class App extends React.Component {
 
     return (
 
-      <Grid>
-        <Row>
-          <Col md={12}>
-          <div>
-            <PageHeader style={header}>ConcertMate <small>discover upcoming concerts around you</small></PageHeader>
-          </div>
-          </Col>
+      <div className="concert-mate-app">
+        <div className="container">
+          <Row>
+            <Col md={6}>
+              <Navbar.Header style={header}>
+                <Navbar.Brand>
+                  <a href="/">ConcertMate</a><small>discover upcoming concerts around you</small>
+                </Navbar.Brand>
+              </Navbar.Header>
+            </Col>
+            <Col md={6}>
+              <Filters requestEvents={this.requestSongkickEvents} />
+            </Col>
+          </Row>
+        </div>
+        <Row className="map-container">
+          <Map />
         </Row>
-        <Row>
-          <Col md={12}>
-            <Filters requestEvents={this.requestSongkickEvents} />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={6}>
-            <Map />
-          </Col>
-          <Col md={6}>
-            <Playlist />
-            <ReactScrollbar style={scrollbar}>
-              <Concerts events={this.props.events} handleArtistClick={this.handleArtistClick}/>
-            </ReactScrollbar>
-          </Col>
-        </Row>
-      </Grid>
+        <div className="playlist-container">
+          <Playlist />
+          <ReactScrollbar style={scrollbar}>
+            <Concerts events={this.props.events} handleArtistClick={this.handleArtistClick}/>
+          </ReactScrollbar>
+        </div>
+      </div>
 
     )
   }
@@ -146,8 +146,8 @@ const mapStateToProps = (state) => {
     'token': state.token, //allows this.props.token to exist and be accessible in component
     'date': state.date, //need access to date here but don't need to edit its state here, so no dispatch method associated
     'artist': state.artist,
-    'events': state.events, 
-    'artistId': state.artistId, 
+    'events': state.events,
+    'artistId': state.artistId,
     'mapCenter': state.mapCenter
   }
 }
@@ -155,7 +155,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   handleSetSpotifyToken(token = '') { //think of this as used in place of 'this.setState()'
     dispatch(setSpotifyToken(token)); //action creator dispatched and root reducer called: { type: 'SET_SPOTIFY_TOKEN', value: token } equivalent
-  }, 
+  },
   handleSetArtist(artist = '') {
     dispatch(setArtist(artist));
   },

@@ -7,12 +7,13 @@ import axios from 'axios';
 import { setDate, setSearchTerm, setMapCenter } from '../redux/actionCreators.js';
 import { connect } from 'react-redux';
 
+
 // ignore the fact that this is called Favorites but the file is called Filters
 const Filters = (props) => {
   // beginning of search functionality. we wanted to implement google search to be able to
   // autocomplete addresses but hey that's your job now
   const handleSubmit = (loc) => {
-    
+
     geocodeByAddress(loc)
     .then(results => getLatLng(results[0]))
     .then(latLng => {
@@ -46,23 +47,21 @@ const Filters = (props) => {
 
   return (
     <div className="navigation">
-      <Navbar>
-        <Navbar.Form pullLeft style={navStyle}>
-          <PlacesAutocomplete
-            onEnterKeyDown={handleSubmit}
-            inputProps={inputProps}
-            highlightFirstSuggestion={true}
-            googleLogo={false}/>
+      <Navbar.Form pullRight style={navStyle}>
+        <PlacesAutocomplete
+          onEnterKeyDown={handleSubmit}
+          inputProps={inputProps}
+          highlightFirstSuggestion={true}
+          googleLogo={false}/>
 
-          <div style={datepicker}>
-            <DatePicker
-              dateFormat="MM/DD/YYYY"
-              selected={props.date} //automatically passed into handleSetData
-              onChange={props.handleSetDate} /> 
-          </div>
-          <Button type="submit" onClick={() => handleSubmit(props.searchTerm)}>Submit</Button>
-        </Navbar.Form>
-      </Navbar>
+        <div style={datepicker}>
+          <DatePicker
+            dateFormat="MM/DD/YYYY"
+            selected={props.date} //automatically passed into handleSetData
+            onChange={props.handleSetDate} />
+        </div>
+        <Button type="submit" onClick={() => handleSubmit(props.searchTerm)}>Submit</Button>
+      </Navbar.Form>
     </div>
   )
 };
@@ -88,4 +87,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
-
