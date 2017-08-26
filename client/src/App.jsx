@@ -10,7 +10,7 @@ import ReactScrollbar from 'react-scrollbar-js';
 import { PageHeader, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setSpotifyToken, setArtist, setSongkickEvents, setArtistId } from './redux/actionCreators.js';
-// import './styles/main.scss';
+import './styles/main.scss';
 
 class App extends React.Component {
   constructor(props) {

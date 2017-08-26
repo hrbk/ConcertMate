@@ -42,7 +42,9 @@
     "sequelize": "^3.21.0",
     "spotify-web-api-node": "^2.4.0",
     "style-loader": "^0.18.2",
-    "webpack": "^3.5.5"
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.5.5",
+    "url-loader": "^0.5.9"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
