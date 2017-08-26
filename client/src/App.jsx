@@ -133,9 +133,9 @@ class App extends React.Component {
         </Row>
         <div className="playlist-container">
           <Playlist />
-          <ReactScrollbar style={scrollbar}>
-            <Concerts events={this.props.events} handleArtistClick={this.handleArtistClick} popularityFilter={this.popularityFilter}/>
-          </ReactScrollbar>
+            <div id="concert-container">
+              <Concerts events={this.props.events} handleArtistClick={this.handleArtistClick} popularityFilter={this.popularityFilter}/>
+            </div>
         </div>
       </div>
 
