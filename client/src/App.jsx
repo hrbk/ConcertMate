@@ -74,12 +74,11 @@ class App extends React.Component {
     }
   }
 
-
   requestSongkickEvents() {
     let formattedDate = this.props.date.format('YYYY-MM-DD');
     let latitude = this.props.mapCenter.lat;
     let longitude = this.props.mapCenter.lng;
-
+    console.log('COORDS', latitude, longitude);
     axios.post('/songkick/', {
       date: formattedDate,
       lat: latitude,
@@ -87,10 +86,8 @@ class App extends React.Component {
       city: this.props.searchTerm
     })
       .then((data) => {
-        console.log('DATA FROM CITIES DB', data);
         this.props.handleSetSongkickEvents(data.data);
-        this.props.handleSetArtist(data.data[0].performance[0].artist.displayName);
-
+        this.props.handleSetArtist(data.data[0].headline);
         this.requestArtistId();
       })
       .catch((err) => {
