@@ -12,7 +12,7 @@ const Playlist = (props) => {
   	<div>
 	    <Panel collapsible defaultExpanded header="Preview Artist" bsStyle="success">
 	    	<iframe src={iframeSRC}
-					width="520" height="95"
+					width="100%" height="95"
 					frameBorder="0" allowTransparency="true"></iframe>
 
 	    </Panel>

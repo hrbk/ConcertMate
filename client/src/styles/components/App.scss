@@ -1,0 +1,45 @@
+.concert-mate-app {
+  #map {
+    height: 100%;
+    width: 100%;
+  }
+  .map-container {
+    height: 92.6vh;
+    width: 100%;
+  }
+  .navigation > .navbar {
+    margin-bottom: 0;
+  }
+  .navbar-brand small {
+    margin-left: 5px;
+  }
+}
+
+.playlist-container {
+  position: fixed;
+  width: 360px;
+  bottom: 0;
+  right: 60px;
+
+  .panel {
+    border: none;
+    margin-bottom: 0;
+  }
+  .panel-success {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .panel-success > .panel-heading {
+    border: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .playlist-container {
+    height: 300px;
+  }
+}

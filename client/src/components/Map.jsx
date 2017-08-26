@@ -6,14 +6,7 @@ import { connect } from 'react-redux';
 import { setMapCenter } from '../redux/actionCreators.js';
 
 const style = {
-  position: 'fixed',
-  overflow: 'visible',
-  top: 190,
-  left: 65,
-  width: '45%',
-  height: '70%',
-  margin: 0,
-  padding: 0
+
 }
 
 const Map = (props) => {
@@ -23,7 +16,7 @@ const Map = (props) => {
   });
 
   return (
-    <div style={style}>
+    <div id='map'>
       <GoogleMapReact
         defaultCenter={{lat: 37.783607, lng:-122.408967}}
         center={props.mapCenter}
