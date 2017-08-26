@@ -40,7 +40,8 @@
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.7.2"
+    "babel-register": "^6.7.2",
+    "style-loader": "^0.18.2"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
