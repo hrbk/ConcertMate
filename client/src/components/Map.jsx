@@ -12,7 +12,7 @@ const style = {
 const Map = (props) => {
 
   let markers = props.events.map((event) => {
-    return <Markers name={event.venue.displayName} lat={event.location.lat} lng={event.location.lng} />
+    return <Markers name={event.venue} lat={event.latitude} lng={event.longitude} />
   });
 
   return (
