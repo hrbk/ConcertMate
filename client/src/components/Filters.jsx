@@ -6,6 +6,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import axios from 'axios';
 import { setDate, setSearchTerm, setMapCenter } from '../redux/actionCreators.js';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 
 // ignore the fact that this is called Favorites but the file is called Filters
@@ -29,9 +30,16 @@ const Filters = (props) => {
     .catch(error => console.log('error', error))
   }
 
-  const datepicker =  {
-    paddingTop: '3.5px'
-  }
+  const StyledDatePicker = styled(DatePicker)`
+    background-image: url(https://www.shareicon.net/data/512x512/2015/09/02/94682_calendar_512x512.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 3.5px;
+    float: left;
+    padding: 15px;
+    width: 44px;
+    color: rgba(0,0,0,0);
+  `;
 
   const inputProps = {
       value: props.searchTerm,
@@ -45,21 +53,27 @@ const Filters = (props) => {
     alignItems: 'center'
   }
 
+  const placesAutocompleteStyles = {
+     root: { border: '1pt solid #ccc' },
+     input: { width: '100%' }
+   }
+
+
   return (
     <div className="navigation">
       <Navbar.Form pullRight style={navStyle}>
+        <StyledDatePicker
+          dateFormat="MM/DD/YYYY"
+          selected={props.date} //automatically passed into handleSetData
+          onChange={props.handleSetDate} />
+
         <PlacesAutocomplete
           onEnterKeyDown={handleSubmit}
           inputProps={inputProps}
           highlightFirstSuggestion={true}
-          googleLogo={false}/>
+          googleLogo={false}
+         styles={placesAutocompleteStyles} />
 
-        <div style={datepicker}>
-          <DatePicker
-            dateFormat="MM/DD/YYYY"
-            selected={props.date} //automatically passed into handleSetData
-            onChange={props.handleSetDate} />
-        </div>
         <Button type="submit" onClick={() => handleSubmit(props.searchTerm)}>Submit</Button>
       </Navbar.Form>
     </div>
