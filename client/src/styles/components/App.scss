@@ -18,6 +18,9 @@
     justify-content: center;
     align-items: center;
   }
+  #concert-container {
+    max-height: inherit;
+  }
 }
 input {
   font-size: 12px;
@@ -30,6 +33,7 @@ input {
   width: 360px;
   bottom: 0;
   right: 60px;
+  height: inherit;
 
   .panel {
     border: none;
