@@ -30,4 +30,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
+export const UnWrappedConcertEntry = ConcertEntry;
 export default connect(mapStateToProps, mapDispatchToProps)(ConcertEntry);
