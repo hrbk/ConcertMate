@@ -86,4 +86,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+export const UnwrapperFilters = Filters;
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

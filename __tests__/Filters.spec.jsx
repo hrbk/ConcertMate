@@ -1,13 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Filters from '../client/src/components/Filters.jsx';
+import Filters, { UnwrapperFilters } from '../client/src/components/Filters.jsx';
 import DatePicker from 'react-datepicker';
 import { shallow, mount } from 'enzyme';
 import moment from 'moment';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
-xdescribe('<Filters />', () => {
-  it('should renders correctly', () => {
-    const component = renderer.create(<Filters />).toJSON();
-    expect(tree).toMatchSnapshot();
+describe('<Filters />', () => {
+  it('should contain PlacesAutocomplete', () => {
+    const component = shallow(<UnwrapperFilters />);
+    expect(component.containsAllMatchingElements([
+      <PlacesAutocomplete />
+    ]));
   });
 });

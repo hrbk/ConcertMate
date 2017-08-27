@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Concerts /> should render correctly 1`] = `
+<div
+  className="panel panel-default"
+  id={null}
+>
+  <div
+    className="panel-heading"
+  >
+    <h4
+      className="panel-title"
+      role="presentation"
+    >
+      <a
+        aria-controls={undefined}
+        aria-expanded={true}
+        aria-selected={true}
+        className={null}
+        href={undefined}
+        onClick={[Function]}
+        role={undefined}
+      >
+        Nearby Concerts
+      </a>
+    </h4>
+  </div>
+  <div
+    aria-expanded={null}
+    aria-hidden={false}
+    className="panel-collapse collapse in"
+    id={undefined}
+    role={undefined}
+  >
+    <ul
+      className="list-group"
+      fill={undefined}
+    />
+  </div>
+</div>
+`;

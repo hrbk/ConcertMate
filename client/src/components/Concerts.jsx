@@ -24,4 +24,5 @@ const mapStateToProps = (state) => {
   }
 }
 
+export const UnwrappedConcerts = Concerts;
 export default connect(mapStateToProps)(Concerts);

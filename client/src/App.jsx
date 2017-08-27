@@ -170,4 +170,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+export const UnwrappedApp = App;
 export default connect(mapStateToProps, mapDispatchToProps)(App);
