@@ -44,7 +44,20 @@
     border-top-color: #aeaeae; }
 
 .react-datepicker-wrapper {
-  display: inline-block; }
+  display: inline-block;
+  input {
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      border: none;
+    }
+  }
+}
+
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
+  left: 22px;
+}
 
 .react-datepicker {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -318,6 +331,7 @@
   font-weight: bold;
   padding: 5px 0;
   clear: left; }
+
 
 .react-datepicker__portal {
   position: fixed;

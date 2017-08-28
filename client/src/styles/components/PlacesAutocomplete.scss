@@ -2,3 +2,11 @@
 .react-datepicker-wrapper, .react-datepicker-popper {
   z-index: 9;
 }
+
+#PlacesAutocomplete__root {
+    input {
+      &:focus {
+        border: none;
+      }
+  }
+}

@@ -13,6 +13,14 @@
   .navbar-brand small {
     margin-left: 5px;
   }
+  > .container > .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #concert-container {
+    max-height: inherit;
+  }
 }
 input {
   font-size: 12px;
@@ -25,6 +33,7 @@ input {
   width: 360px;
   bottom: 0;
   right: 60px;
+  height: inherit;
 
   .panel {
     border: none;
@@ -46,5 +55,21 @@ input {
 @media screen and (max-width: 767px) {
   .playlist-container {
     height: 300px;
+  }
+  .concert-mate-app .map-container {
+    height: 95vh;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .concert-mate-app > .container > .row {
+    flex-flow: column;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .playlist-container {
+    width: 70%;
   }
 }
