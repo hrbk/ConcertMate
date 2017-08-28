@@ -27,4 +27,5 @@ const mapStateToProps = (state) => {
   }
 }
 
+export const UnwrappedPlaylist = Playlist;
 export default connect(mapStateToProps)(Playlist);

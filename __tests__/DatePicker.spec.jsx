@@ -9,7 +9,7 @@ describe('<DatePicker />', () => {
     const component = renderer.create(<DatePicker />).toJSON();
     expect(component).toMatchSnapshot();
   });
-  
+
   it('should start DatePicker with todays date', () => {
     const now = moment();
     const component = shallow(<DatePicker selected={now} />);

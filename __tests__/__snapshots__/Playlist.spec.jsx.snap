@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Playlist /> should render a Playlist componenet 1`] = `
+<div>
+  <div
+    className="panel panel-success"
+    id={null}
+  >
+    <div
+      className="panel-heading"
+    >
+      <h4
+        className="panel-title"
+        role="presentation"
+      >
+        <a
+          aria-controls={undefined}
+          aria-expanded={true}
+          aria-selected={true}
+          className={null}
+          href={undefined}
+          onClick={[Function]}
+          role={undefined}
+        >
+          Preview Artist
+        </a>
+      </h4>
+    </div>
+    <div
+      aria-expanded={null}
+      aria-hidden={false}
+      className="panel-collapse collapse in"
+      id={undefined}
+      role={undefined}
+    >
+      <div
+        className="panel-body"
+      >
+        <iframe
+          allowTransparency="true"
+          frameBorder="0"
+          height="95"
+          src="https://open.spotify.com/embed?uri=spotify:user:1211115253:playlist:6r1hzKf8a0KYkbt44we1Cl"
+          width="100%"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
