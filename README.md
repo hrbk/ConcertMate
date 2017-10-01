@@ -36,6 +36,7 @@
 - React 15.6.x
 - Webpack 3.4.x
 - ReactDOM 15.6.x
+- Redux 3.7.x
 - Nodemon 1.11.0
 - JQuery 3.1.x
 
